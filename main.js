@@ -168,24 +168,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  const contactForm = document.getElementById("contactForm");
+const contactForm = document.getElementById("contactForm");
   
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let statusMessage = document.createElement('div');
+    statusMessage.className = 'form-status';
+    contactForm.appendChild(statusMessage);
+    
   
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const subject = document.getElementById("subject").value;
-      const message = document.getElementById("message").value;
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Enviando...';
+    
   
-      console.log("Form submitted:", { name, email, subject, message });
+    const formData = new FormData(contactForm);
+    
   
-      alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-  
-      contactForm.reset();
+    fetch('send_email.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+    
+      statusMessage.textContent = data.message;
+      statusMessage.className = data.success ? 'form-status success' : 'form-status error';
+      
+    
+      if (data.success) {
+        contactForm.reset();
+      }
+      
+    
+      if (data.errors && Array.isArray(data.errors)) {
+        const errorList = document.createElement('ul');
+        data.errors.forEach(error => {
+          const errorItem = document.createElement('li');
+          errorItem.textContent = error;
+          errorList.appendChild(errorItem);
+        });
+        statusMessage.appendChild(errorList);
+      }
+      
+    
+      setTimeout(() => {
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Enviar Mensagem';
+      }, 2000);
+      
+    
+      if (data.success) {
+        setTimeout(() => {
+          statusMessage.remove();
+        }, 5000);
+      }
+    })
+    .catch(error => {
+      statusMessage.textContent = 'Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente.';
+      statusMessage.className = 'form-status error';
+      
+    
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Enviar Mensagem';
+      
+      console.error('Erro:', error);
     });
-  }
+  });
+}
 
   const images = document.querySelectorAll('img');
   images.forEach(img => {
