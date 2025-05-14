@@ -168,41 +168,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-const contactForm = document.getElementById("contactForm");
-  
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
+  const contactForm = document.getElementById("contactForm");
+    
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let statusMessage = document.createElement('div');
     statusMessage.className = 'form-status';
     contactForm.appendChild(statusMessage);
-    
-  
+
     const submitButton = contactForm.querySelector('button[type="submit"]');
     submitButton.disabled = true;
     submitButton.innerHTML = 'Enviando...';
-    
-  
+
     const formData = new FormData(contactForm);
-    
-  
-    fetch('send_email.php', {
+
+    fetch('/send-email', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+      })
     })
     .then(response => response.json())
     .then(data => {
-    
       statusMessage.textContent = data.message;
       statusMessage.className = data.success ? 'form-status success' : 'form-status error';
-      
-    
+
       if (data.success) {
         contactForm.reset();
       }
-      
-    
+
       if (data.errors && Array.isArray(data.errors)) {
         const errorList = document.createElement('ul');
         data.errors.forEach(error => {
@@ -212,14 +214,12 @@ if (contactForm) {
         });
         statusMessage.appendChild(errorList);
       }
-      
-    
+
       setTimeout(() => {
         submitButton.disabled = false;
         submitButton.innerHTML = 'Enviar Mensagem';
       }, 2000);
-      
-    
+
       if (data.success) {
         setTimeout(() => {
           statusMessage.remove();
@@ -227,13 +227,12 @@ if (contactForm) {
       }
     })
     .catch(error => {
-      statusMessage.textContent = 'Ocorreu um erro ao processar sua solicitação. Por favor, tente novamente.';
+      statusMessage.textContent = 'Erro ao processar a solicitação. Tente novamente.';
       statusMessage.className = 'form-status error';
-      
-    
+
       submitButton.disabled = false;
       submitButton.innerHTML = 'Enviar Mensagem';
-      
+
       console.error('Erro:', error);
     });
   });
