@@ -538,10 +538,13 @@ header {
 }
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 5rem;
+  background: linear-gradient(135deg, var(--background-color) 0%, rgba(106, 175, 220, 0.1) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
@@ -552,22 +555,27 @@ header {
 }
 
 .hero-text h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   transition: color 0.3s ease;
+  font-weight: 700;
+  line-height: 1.1;
 }
 
 .hero-text h2 {
-  font-size: 1.5rem;
-  color: #d9c9b6;
+  font-size: 1.8rem;
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
   transition: color 0.3s ease;
+  font-weight: 600;
 }
 
 .hero-text p {
   margin-bottom: 2rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: color 0.3s ease;
+  opacity: 0.9;
+  line-height: 1.6;
 }
 
 .hero-btns {
@@ -600,12 +608,13 @@ header {
 
 .profile-img {
   border-radius: 50%;
-  border: 5px solid #6aafdc;
-  box-shadow: 0 5px 15px rgba(74, 140, 191, 0.1);
+  border: 6px solid var(--primary-color);
+  box-shadow: 0 20px 40px rgba(106, 175, 220, 0.3), 0 0 0 20px rgba(106, 175, 220, 0.1);
   object-fit: cover;
   width: 300px;
   height: 300px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  animation: profileFloat 6s ease-in-out infinite;
 }
 
 .about-content {
@@ -1264,7 +1273,8 @@ footer {
     left: -100%;
     top: 5rem;
     flex-direction: column;
-    background: #faf7f2;
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(10px);
     width: 100%;
     box-shadow: 0 5px 15px rgba(74, 140, 191, 0.1);
     padding: 2rem;
@@ -1273,7 +1283,7 @@ footer {
   }
 
   .dark .nav-menu {
-    background: #121212;
+    background: rgba(18, 18, 18, 0.95);
   }
 
   .nav-menu.active {
@@ -1289,31 +1299,44 @@ footer {
   }
 
   .hero {
-    height: auto;
-    padding-top: 7rem;
-    padding-bottom: 3rem;
+    min-height: 100vh;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
   }
 
   .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   .hero-text h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .hero-text p {
+    text-align: center;
+    font-size: 1.1rem;
   }
 
   .hero-btns {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 1rem;
   }
 
   .hero-btns .btn {
-    margin-bottom: 1rem;
     width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 
   .social-icons {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
   }
 
   .testimonial-card {
@@ -1357,7 +1380,16 @@ footer {
 
 @media screen and (max-width: 576px) {
   .hero-text h1 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
+
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
   }
 
   .section-header h2 {
@@ -1365,8 +1397,9 @@ footer {
   }
 
   .profile-img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 2rem;
   }
 
   .projects-grid {
@@ -1424,16 +1457,20 @@ footer {
 
 @media screen and (max-width: 400px) {
   .hero-text h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .hero-text h2 {
     font-size: 1.2rem;
   }
 
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
   .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
 
   .section-header h2 {
