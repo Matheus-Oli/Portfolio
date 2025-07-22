@@ -1779,13 +1779,20 @@ footer::before {
   }
 
   .footer-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     text-align: center;
-    gap: 1.5rem;
   }
 
-  .footer-links {
-    justify-content: center;
+  .footer-section h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 
   .section-header {
