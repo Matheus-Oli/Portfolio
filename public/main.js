@@ -100,6 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right, .slide-in-up").forEach((element) => {
     observer.observe(element);
   });
+
+  const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const skillBars = entry.target.querySelectorAll('.skill-progress');
+        skillBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          setTimeout(() => {
+            bar.style.width = width + '%';
+          }, 300);
+        });
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".skills-category").forEach((element) => {
+    skillsObserver.observe(element);
+  });
   
   const mobileMenu = document.getElementById("mobile-menu");
   const navMenu = document.querySelector(".nav-menu");
