@@ -1488,6 +1488,11 @@ footer {
 
   .skills-grid {
     gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .skills-category {
+    padding: 1.5rem;
   }
 
   .soft-skills-grid {
