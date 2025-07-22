@@ -1511,8 +1511,25 @@ footer {
   }
 
   .about-image img {
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .about-card {
+    padding: 1.5rem;
   }
 
   .skills-grid {
