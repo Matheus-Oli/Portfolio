@@ -1628,6 +1628,11 @@ footer::before {
     gap: 3rem;
   }
 
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
   .hero-image {
     order: -1;
     text-align: center;
