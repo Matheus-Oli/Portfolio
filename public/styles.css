@@ -2108,6 +2108,38 @@ footer::before {
     padding: 0.8rem;
   }
 
+  .education-timeline {
+    padding-left: 1rem;
+  }
+
+  .timeline-dot {
+    left: -1rem;
+    top: 1rem;
+  }
+
+  .timeline-content {
+    margin-left: 1rem;
+  }
+
+  .education-card {
+    padding: 1.5rem;
+  }
+
+  .education-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .education-status {
+    margin-top: 0.5rem;
+  }
+
+  .certifications-section {
+    padding: 1.5rem;
+  }
+
   .soft-skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
