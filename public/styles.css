@@ -1671,6 +1671,29 @@ footer {
     padding: 1.5rem;
   }
 
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-card {
+    padding: 1.5rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .contact-grid {
+    gap: 0.8rem;
+  }
+
+  .contact-info-item {
+    padding: 0.8rem;
+  }
+
   .soft-skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
