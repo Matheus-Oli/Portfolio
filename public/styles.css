@@ -633,45 +633,204 @@ header {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: center;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-image-container {
+  position: relative;
+}
+
+.about-image {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .about-image img {
-  border-radius: 1rem;
-  box-shadow: 0 5px 15px rgba(74, 140, 191, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(74, 140, 191, 0.15);
   object-fit: cover;
+  width: 100%;
   max-height: 400px;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.about-text h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #6aafdc;
-  transition: color 0.3s ease;
+.about-image:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(74, 140, 191, 0.2);
 }
 
-.about-text p {
-  margin-bottom: 1.5rem;
-  transition: color 0.3s ease;
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-.about-details {
-  margin: 2rem 0;
+.stat-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(74, 140, 191, 0.1);
+  transition: all 0.3s ease;
 }
 
-.detail-item {
+.dark .stat-item {
+  background: var(--light-color);
+  border: 1px solid var(--border-color);
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(74, 140, 191, 0.15);
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.about-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(74, 140, 191, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .about-card {
+  background: var(--light-color);
+  border: 1px solid var(--border-color);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(74, 140, 191, 0.15);
+}
+
+.card-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.detail-item i {
-  width: 30px;
-  color: #6aafdc;
-  transition: color 0.3s ease;
+.card-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.card-header h3 {
+  font-size: 1.3rem;
+  color: var(--dark-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.dark .card-header h3 {
+  color: var(--text-color);
+}
+
+.about-card p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.about-contact-info {
+  background: var(--light-color);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.about-contact-info h4 {
+  color: var(--dark-color);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.dark .about-contact-info h4 {
+  color: var(--text-color);
+}
+
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.dark .contact-info-item {
+  background: var(--dark-color);
+  border: 1px solid var(--border-color);
+}
+
+.contact-info-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(74, 140, 191, 0.1);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+
+.contact-value {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  font-weight: 500;
 }
 
 .project-filters {
