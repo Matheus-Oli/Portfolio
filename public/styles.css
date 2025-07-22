@@ -335,6 +335,7 @@ h6 {
 .slide-in-up.visible {
   opacity: 1;
   transform: translate(0);
+  align-self: center;
 }
 
 * {
@@ -481,6 +482,13 @@ header {
   width: 100%;
 }
 
+.gambiarra {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+}
+
 .logo a {
   font-size: 1.5rem;
   font-weight: 700;
@@ -624,6 +632,8 @@ header {
   height: 300px;
   transition: all 0.3s ease;
   animation: profileFloat 6s ease-in-out infinite;
+  object-fit: cover;           /* preenche o círculo */
+  object-position: 50% 15%;
 }
 
 .profile-img:hover {
@@ -1046,29 +1056,8 @@ header {
 .skill-item p {
   font-size: 1rem;
   color: var(--text-color);
-  margin-bottom: 1rem;
   font-weight: 500;
   transition: color 0.3s ease;
-}
-
-.skill-level {
-  margin-top: 1rem;
-}
-
-.skill-bar {
-  height: 6px;
-  background: var(--border-color);
-  border-radius: 3px;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-}
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-  border-radius: 3px;
-  width: 0%;
-  transition: width 1s ease-out;
 }
 
 .section-header p {
