@@ -1,0 +1,54 @@
+/*
+ * Entrance start states, applied before first paint by the boot script (html[data-motion]).
+ * SiteMotion animates each one to its rest state with GSAP. Without data-motion
+ * (reduced motion, or the safety timer fired) everything renders in place.
+ *
+ *   .reveal           fade-up block, once at "top 88%"; offset via --reveal-y (default 28px)
+ *   .reveal--sm       same, 12px offset
+ *   [data-reveal-group] > … .reveal-item   small items, 12px, staggered when the group hits "top 70%"
+ *   .mask > span      mask reveal on load: the wrapper clips, the inner span rises from 105%
+ */
+
+.site .reveal { --reveal-y: 28px }
+.site .reveal--sm { --reveal-y: 12px }
+
+.site .mask { vertical-align: bottom; display: inline-block; overflow: hidden }
+.site .mask > span { display: inline-block }
+
+html[data-motion] .site .reveal:not(.is-revealed) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--reveal-y));
+}
+
+html[data-motion] .site .reveal-item:not(.is-revealed) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+}
+
+html[data-motion] .site [data-hero-grid] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html[data-motion] .site [data-intro="eyebrow"] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+}
+
+html[data-motion] .site [data-intro="actions"],
+html[data-motion] .site [data-intro="stats"] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+}
+
+html[data-motion] .site .name__line > span { transform: translateY(108%) }
+
+html[data-motion] .site .mask > span,
+html[data-motion] .site .word > span { transform: translateY(105%) }
+
+/* Room for descenders (g, y, p) inside the clipped mask; the negative margin keeps the line box unchanged */
+.site .mask { padding-bottom: 0.12em; margin-bottom: -0.12em }
